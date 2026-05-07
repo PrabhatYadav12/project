@@ -1,58 +1,703 @@
 <!DOCTYPE html>
-<html>
-    <head>
-        <title>Prabhat Portfolio</title>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+  <title>School of Prabhat | Excellence in Education</title>
+  <!-- Google Fonts & Font Awesome Icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:opsz,wght@14..32,300;14..32,400;14..32,500;14..32,600;14..32,700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-        <style>
-            body {
-                background-color: rgb(255, 255, 255);
-                color: rgb(20, 19, 19);
-                text-align: center;
-                font-family: Arial;
-            }
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: #f9fafc;
+      color: #1e293b;
+      line-height: 1.5;
+      scroll-behavior: smooth;
+    }
 
-            h1 {
-                color: rgb(10, 10, 10);
-                font-size: 50px;
-            }
+    /* Container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
 
-            p {
-                font-size: 20px;
-            }
+    /* Header & Nav */
+    header {
+      background: white;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+    .navbar {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 0;
+    }
+    .logo h1 {
+      font-size: 1.8rem;
+      font-weight: 700;
+      background: linear-gradient(135deg, #1e3c72, #2a5298);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .logo p {
+      font-size: 0.75rem;
+      letter-spacing: 1px;
+      color: #4b5563;
+    }
+    .nav-links {
+      display: flex;
+      gap: 28px;
+      list-style: none;
+      flex-wrap: wrap;
+    }
+    .nav-links a {
+      text-decoration: none;
+      font-weight: 600;
+      color: #1f2937;
+      transition: 0.2s;
+    }
+    .nav-links a:hover, .nav-links a.active {
+      color: #2a5298;
+      border-bottom: 2px solid #2a5298;
+      padding-bottom: 4px;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.6rem;
+      cursor: pointer;
+    }
 
-            button {
-                background-color: rgb(76, 74, 80);
-                color: black;
-                padding: 10px 20px;
-                font-size: 18px;
-                border-radius: 40%;
-                cursor: pointer;
-                
-            }
+    /* Hero Section */
+    .hero {
+      background: linear-gradient(105deg, #ffffff 0%, #f1f5fe 100%);
+      padding: 70px 0;
+    }
+    .hero-grid {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 40px;
+    }
+    .hero-content {
+      flex: 1;
+    }
+    .hero-content .badge {
+      background: #e0e7ff;
+      color: #1e3a8a;
+      display: inline-block;
+      padding: 5px 14px;
+      border-radius: 40px;
+      font-weight: 600;
+      font-size: 0.8rem;
+      margin-bottom: 20px;
+    }
+    .hero-content h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      line-height: 1.2;
+      margin-bottom: 20px;
+      color: #0f172a;
+    }
+    .hero-content p {
+      font-size: 1.1rem;
+      color: #334155;
+      margin-bottom: 30px;
+    }
+    .btn-group {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+    }
+    .btn-primary {
+      background: #2a5298;
+      color: white;
+      padding: 12px 28px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      background: #1e3c72;
+      transform: translateY(-2px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid #2a5298;
+      color: #2a5298;
+      padding: 10px 26px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: 0.2s;
+    }
+    .btn-outline:hover {
+      background: #2a5298;
+      color: white;
+    }
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+    .hero-image img {
+      max-width: 100%;
+      border-radius: 32px;
+      box-shadow: 0 20px 30px -12px rgba(0,0,0,0.1);
+    }
 
-            button:hover {
-                background-color: rgb(34, 27, 49);
-            }
-        </style>
+    /* Features / Highlights */
+    .features {
+      padding: 70px 0;
+      background: white;
+    }
+    .section-title {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .section-title h2 {
+      font-size: 2.2rem;
+      font-weight: 700;
+      color: #0f172a;
+    }
+    .section-title p {
+      color: #475569;
+      max-width: 600px;
+      margin: 8px auto 0;
+    }
+    .feature-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+      justify-content: center;
+    }
+    .card {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 30px 24px;
+      text-align: center;
+      box-shadow: 0 12px 28px rgba(0,0,0,0.05);
+      flex: 1 1 220px;
+      transition: 0.25s;
+      border: 1px solid #eef2ff;
+    }
+    .card i {
+      font-size: 2.8rem;
+      color: #2a5298;
+      margin-bottom: 20px;
+    }
+    .card h3 {
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+    }
+    .card p {
+      color: #4b5563;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 32px rgba(0,0,0,0.08);
+    }
 
+    /* About & Principal message */
+    .about-principal {
+      background: #f8fafc;
+      padding: 70px 0;
+    }
+    .two-columns {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 50px;
+      align-items: center;
+    }
+    .about-text {
+      flex: 1;
+    }
+    .about-text h3 {
+      font-size: 1.8rem;
+      margin-bottom: 20px;
+    }
+    .principal-card {
+      flex: 1;
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.05);
+    }
+    .principal-card img {
+      width: 120px;
+      height: 120px;
+      object-fit: cover;
+      border-radius: 50%;
+      margin-bottom: 20px;
+      border: 4px solid #2a5298;
+    }
+    .quote {
+      font-style: italic;
+      margin: 15px 0;
+      color: #2d3e6e;
+    }
+
+    /* Academics / Programs */
+    .academics {
+      padding: 70px 0;
+      background: white;
+    }
+    .program-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 28px;
+      justify-content: center;
+    }
+    .program-item {
+      background: #f1f5f9;
+      border-radius: 24px;
+      padding: 28px;
+      width: 280px;
+      transition: 0.2s;
+    }
+    .program-item i {
+      font-size: 2rem;
+      background: #2a5298;
+      color: white;
+      padding: 12px;
+      border-radius: 50%;
+      margin-bottom: 20px;
+    }
+    .program-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+    }
+
+    /* Admission Section */
+    .admission {
+      background: linear-gradient(115deg, #eef2ff, #ffffff);
+      padding: 70px 0;
+    }
+    .admission-flex {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 40px;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .admission-info {
+      flex: 1;
+    }
+    .admission-info h2 {
+      font-size: 2rem;
+    }
+    .admission-list {
+      margin: 20px 0;
+      list-style: none;
+    }
+    .admission-list li {
+      margin: 12px 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .admission-list i {
+      color: #2a5298;
+    }
+    .admission-form {
+      flex: 1;
+      background: white;
+      padding: 30px;
+      border-radius: 32px;
+      box-shadow: 0 20px 30px -10px rgba(0,0,0,0.1);
+    }
+    .form-group {
+      margin-bottom: 18px;
+    }
+    .form-group input, .form-group select, .form-group textarea {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid #cbd5e1;
+      border-radius: 24px;
+      font-family: inherit;
+      outline: none;
+    }
+    .form-group input:focus {
+      border-color: #2a5298;
+    }
+    button[type="submit"] {
+      background: #2a5298;
+      color: white;
+      border: none;
+      padding: 12px 24px;
+      border-radius: 40px;
+      font-weight: bold;
+      cursor: pointer;
+      width: 100%;
+    }
+
+    /* Events & News */
+    .events {
+      padding: 70px 0;
+      background: #fefce8;
+    }
+    .events-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 30px;
+    }
+    .event-card {
+      background: white;
+      border-radius: 24px;
+      padding: 18px 24px;
+      flex: 1 1 280px;
+      border-left: 6px solid #2a5298;
+      box-shadow: 0 5px 12px rgba(0,0,0,0.03);
+    }
+    .event-date {
+      font-weight: 700;
+      color: #2a5298;
+    }
+
+    /* Contact & Footer */
+    .contact {
+      padding: 70px 0 40px;
+      background: #0f172a;
+      color: #e2e8f0;
+    }
+    .contact-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 48px;
+      justify-content: space-between;
+    }
+    .contact-col h3, .contact-col h4 {
+      color: white;
+      margin-bottom: 20px;
+    }
+    .contact-col p, .contact-col li {
+      margin-bottom: 12px;
+    }
+    .contact-col ul {
+      list-style: none;
+    }
+    .social-icons a {
+      color: #cbd5e1;
+      margin-right: 18px;
+      font-size: 1.4rem;
+      transition: 0.2s;
+    }
+    .social-icons a:hover {
+      color: white;
+    }
+    .copyright {
+      text-align: center;
+      padding-top: 40px;
+      margin-top: 40px;
+      border-top: 1px solid #334155;
+      font-size: 0.85rem;
+    }
+    /* responsive */
+    @media (max-width: 900px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: white;
+        padding: 20px 0;
+      }
+      .nav-links.show {
+        display: flex;
+      }
+      .menu-icon {
+        display: block;
+      }
+      .hero-grid {
+        flex-direction: column-reverse;
+        text-align: center;
+      }
+      .btn-group {
+        justify-content: center;
+      }
+      .hero-content h1 {
+        font-size: 2.2rem;
+      }
+    }
+  </style>
 </head>
-
 <body>
 
-    <h1>Prabhat Yadav</h1>
-    <hr>
-    <p>B.Tech CSE Student - LPU</p>
-    <p>I love coding and photography </p>
-    <hr>
+<header>
+  <div class="container">
+    <div class="navbar">
+      <div class="logo">
+        <h1>School of Prabhat</h1>
+        <p>Since 1998 | Shaping Futures</p>
+      </div>
+      <div class="menu-icon" id="menuToggle">
+        <i class="fas fa-bars"></i>
+      </div>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#about">About</a></li>
+        <li><a href="#academics">Academics</a></li>
+        <li><a href="#admission">Admission</a></li>
+        <li><a href="#events">Events</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </div>
+</header>
 
-    <button onclick="showMessage()">Click Me</button>
+<main>
+  <!-- Hero section -->
+  <section id="home" class="hero">
+    <div class="container hero-grid">
+      <div class="hero-content">
+        <span class="badge">📚 CBSE Affiliated | Grade K-12</span>
+        <h1>Ignite Curiosity, <br> Empower Tomorrow</h1>
+        <p>World-class education with values, innovation, and holistic development. Join School of Prabhat for an inspiring learning journey.</p>
+        <div class="btn-group">
+          <a href="#admission" class="btn-primary">Apply Now <i class="fas fa-arrow-right"></i></a>
+          <a href="#contact" class="btn-outline">Visit Campus</a>
+        </div>
+      </div>
+      <div class="hero-image">
+        <img src="https://placehold.co/600x400/eef2ff/2a5298?text=Students+in+Action" alt="School Campus">
+      </div>
+    </div>
+  </section>
+
+  <!-- Features Highlights -->
+  <section class="features">
+    <div class="container">
+      <div class="section-title">
+        <h2>Why School of Prabhat?</h2>
+        <p>Excellence, innovation, and care — the pillars of our institution</p>
+      </div>
+      <div class="feature-cards">
+        <div class="card"><i class="fas fa-chalkboard-user"></i><h3>Expert Faculty</h3><p>Highly qualified & passionate teachers</p></div>
+        <div class="card"><i class="fas fa-globe"></i><h3>Global Curriculum</h3><p>CBSE with international exposure</p></div>
+        <div class="card"><i class="fas fa-microchip"></i><h3>Smart Classes</h3><p>Digital & interactive learning</p></div>
+        <div class="card"><i class="fas fa-hand-holding-heart"></i><h3>Moral Values</h3><p>Character & life skills programs</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About & Principal message -->
+  <section id="about" class="about-principal">
+    <div class="container two-columns">
+      <div class="about-text">
+        <h3>About Our School</h3>
+        <p>School of Prabhat was founded with a vision to create leaders, thinkers, and compassionate human beings. With state-of-the-art infrastructure, sports facilities, science labs, and a vibrant arts program, we nurture every child’s potential. Our student-teacher ratio is 15:1, ensuring personalized attention.</p>
+        <p>We believe education goes beyond textbooks — we foster curiosity, creativity, and resilience through experiential learning, field trips, and community projects.</p>
+      </div>
+      <div class="principal-card">
+        <img src="https://placehold.co/200x200/2a5298/white?text=Dr.+Sharma" alt="Principal">
+        <h4>Dr. Anita Sharma</h4>
+        <p>Principal, School of Prabhat</p>
+        <div class="quote">“Every child is unique, and our mission is to provide a nurturing ground where dreams take flight.”</div>
+        <i class="fas fa-quote-right" style="color:#2a5298;"></i>
+      </div>
+    </div>
+  </section>
+
+  <!-- Academics Section with programs -->
+  <section id="academics" class="academics">
+    <div class="container">
+      <div class="section-title">
+        <h2>Academic Programs</h2>
+        <p>Holistic curriculum designed to meet 21st-century needs</p>
+      </div>
+      <div class="program-grid">
+        <div class="program-item"><i class="fas fa-child"></i><h4>Primary (K-5)</h4><p>Foundational literacy, numeracy, and creative arts.</p></div>
+        <div class="program-item"><i class="fas fa-flask"></i><h4>Middle (6-8)</h4><p>STEM, Social Sciences, and languages.</p></div>
+        <div class="program-item"><i class="fas fa-laptop-code"></i><h4>Secondary (9-10)</h4><p>CBSE curriculum + skill electives (AI, coding).</p></div>
+        <div class="program-item"><i class="fas fa-university"></i><h4>Senior Secondary (11-12)</h4><p>Science, Commerce, Humanities with career counseling.</p></div>
+      </div>
+      <div style="margin-top: 40px; text-align: center;">
+        <a href="#admission" class="btn-primary">📖 Download Prospectus</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Admission Section (with inquiry form) -->
+  <section id="admission" class="admission">
+    <div class="container admission-flex">
+      <div class="admission-info">
+        <h2>Admissions Open 2025-26</h2>
+        <p>Join School of Prabhat's legacy of excellence. Limited seats available for Grades Nursery to 12.</p>
+        <ul class="admission-list">
+          <li><i class="fas fa-check-circle"></i> Simple online application process</li>
+          <li><i class="fas fa-check-circle"></i> Merit-based scholarships available</li>
+          <li><i class="fas fa-check-circle"></i> Interactive school tour on request</li>
+          <li><i class="fas fa-check-circle"></i> Transport facility across city</li>
+        </ul>
+        <div class="btn-group" style="margin-top: 20px;">
+          <a href="#" class="btn-outline"><i class="fas fa-phone-alt"></i> +91 98765 43210</a>
+        </div>
+      </div>
+      <div class="admission-form">
+        <h3 style="margin-bottom: 20px;">Request Information</h3>
+        <form id="inquiryForm">
+          <div class="form-group"><input type="text" placeholder="Student's Full Name" id="studentName" required></div>
+          <div class="form-group"><input type="email" placeholder="Parent Email" id="parentEmail" required></div>
+          <div class="form-group"><input type="tel" placeholder="Phone Number" id="phone"></div>
+          <div class="form-group">
+            <select id="grade">
+              <option>Select Grade</option>
+              <option>Nursery - UKG</option>
+              <option>Grade 1-5</option>
+              <option>Grade 6-8</option>
+              <option>Grade 9-10</option>
+              <option>Grade 11-12</option>
+            </select>
+          </div>
+          <div class="form-group"><textarea rows="2" placeholder="Message (optional)" id="message"></textarea></div>
+          <button type="submit">Submit Enquiry <i class="fas fa-paper-plane"></i></button>
+        </form>
+        <p id="formFeedback" style="margin-top: 12px; font-size:0.85rem; color:#2a5298;"></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Events & News -->
+  <section id="events" class="events">
+    <div class="container">
+      <div class="section-title">
+        <h2>Upcoming Events & News</h2>
+        <p>Stay updated with our vibrant school calendar</p>
+      </div>
+      <div class="events-grid">
+        <div class="event-card"><div class="event-date">📅 15 May 2025</div><h4>Annual Sports Meet</h4><p>Track & field, games, and parent relays.</p></div>
+        <div class="event-card"><div class="event-date">📅 28 May 2025</div><h4>Science Exhibition</h4><p>Young innovators present projects.</p></div>
+        <div class="event-card"><div class="event-date">📅 10 June 2025</div><h4>Parent-Teacher Conference</h4><p>Progress discussions & feedback.</p></div>
+        <div class="event-card"><div class="event-date">🎉 05 July 2025</div><h4>Summer Fiesta & Cultural Fest</h4><p>Music, dance, food stalls.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact & Footer -->
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="contact-grid">
+        <div class="contact-col">
+          <h3>School of Prabhat</h3>
+          <p><i class="fas fa-map-marker-alt"></i> Block C, Knowledge Park, Delhi NCR - 110092</p>
+          <p><i class="fas fa-phone-alt"></i> +91 11 4567 8901, +91 98765 43210</p>
+          <p><i class="fas fa-envelope"></i> admissions@schoolofprabhat.edu</p>
+        </div>
+        <div class="contact-col">
+          <h4>Quick Links</h4>
+          <ul>
+            <li><a href="#home" style="color:#cbd5e1; text-decoration:none;">Home</a></li>
+            <li><a href="#about" style="color:#cbd5e1; text-decoration:none;">About Us</a></li>
+            <li><a href="#academics" style="color:#cbd5e1; text-decoration:none;">Academics</a></li>
+            <li><a href="#admission" style="color:#cbd5e1; text-decoration:none;">Admissions</a></li>
+          </ul>
+        </div>
+        <div class="contact-col">
+          <h4>School Hours</h4>
+          <p>Monday - Friday: 8:00 AM - 2:30 PM</p>
+          <p>Saturday: 9:00 AM - 12:30 PM (Activities)</p>
+          <div class="social-icons">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+      </div>
+      <div class="copyright">
+        <p>&copy; 2025 School of Prabhat. All rights reserved. Designed with <i class="fas fa-heart" style="color:#f97316;"></i> for education.</p>
+      </div>
+    </div>
+  </section>
+</main>
 
 <script>
-    function showMessage() {
-        alert("Welcome to Prabhat's Website ");
-                }
-</script>
+  // Mobile menu toggle
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  menuToggle.addEventListener('click', () => {
+    navLinks.classList.toggle('show');
+  });
 
+  // Smooth scrolling for anchor links
+  document.querySelectorAll('.nav-links a, .btn-primary[href^="#"], .btn-outline[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId && targetId !== "#" && targetId.startsWith("#")) {
+        e.preventDefault();
+        const targetElement = document.querySelector(targetId);
+        if (targetElement) {
+          targetElement.scrollIntoView({ behavior: 'smooth' });
+          // close mobile menu after click
+          if (navLinks.classList.contains('show')) navLinks.classList.remove('show');
+        }
+      }
+    });
+  });
+
+  // Admission form simple validation & feedback
+  const inquiryForm = document.getElementById('inquiryForm');
+  const feedback = document.getElementById('formFeedback');
+  inquiryForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = document.getElementById('studentName').value.trim();
+    const email = document.getElementById('parentEmail').value.trim();
+    const grade = document.getElementById('grade').value;
+    if (!name || !email || grade === 'Select Grade') {
+      feedback.innerHTML = '⚠️ Please fill all required fields (Name, Email, Grade)';
+      feedback.style.color = '#b91c1c';
+      return;
+    }
+    if (!email.includes('@') || !email.includes('.')) {
+      feedback.innerHTML = '⚠️ Please enter a valid email address.';
+      feedback.style.color = '#b91c1c';
+      return;
+    }
+    // simulate submission
+    feedback.innerHTML = '✅ Thank you! Our admission team will contact you shortly.';
+    feedback.style.color = '#15803d';
+    inquiryForm.reset();
+    setTimeout(() => {
+      feedback.innerHTML = '';
+    }, 5000);
+  });
+
+  // Active nav link highlight on scroll
+  const sections = document.querySelectorAll('section[id]');
+  window.addEventListener('scroll', () => {
+    let current = '';
+    const scrollPos = window.scrollY + 100;
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop;
+      const sectionHeight = section.clientHeight;
+      if (scrollPos >= sectionTop && scrollPos < sectionTop + sectionHeight) {
+        current = section.getAttribute('id');
+      }
+    });
+    document.querySelectorAll('.nav-links a').forEach(link => {
+      link.classList.remove('active');
+      const href = link.getAttribute('href').substring(1);
+      if (href === current) {
+        link.classList.add('active');
+      } else if (current === '' && link.getAttribute('href') === '#home') {
+        link.classList.add('active');
+      }
+    });
+  });
+</script>
 </body>
 </html>
-            
